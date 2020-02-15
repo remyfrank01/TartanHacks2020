@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2 style="padding: 10px 100px 10px 100px">Hello, {{ user.username }}!</h2>
+    {% if current_user.is_anonymous %}
+    <h2 style="padding: 10px 100px 10px 100px">Welcome! Sign in to play!</h2>
+    {% else %}
+    <h2 style="padding: 10px 100px 10px 100px">Hello, {{ current_user.username }}!</h2>
+    {% endif %}
     <h3 style="padding: 10px 100px 10px 100px">
         Welcome to SafeBet, a risk-free alternative to standard sports betting for those
         looking for extra practice or those at risk for gambling addictions.

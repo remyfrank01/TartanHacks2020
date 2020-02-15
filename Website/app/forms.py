@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import *
-from wtforms.validators import DataRequired
+from wtforms.validators import *
+from app.models import User
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -15,3 +16,16 @@ class PlaceBetForm(FlaskForm):
     bet = IntegerField('Bet Amount', validators=[DataRequired()])
     team = SelectField('Team, "Left" or "Right"', choices = [('left', 'Left'), ('right', 'Right')], validators=[DataRequired()])
     placeBet = SubmitField('Place Bet')
+
+class RegistrationForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Register')
+
+    def validate_username(self, username):
+        # Check for duplicates
+        user = User.query.filter_by(username=username.data).first()
+        if user is not None:
+            raise ValidationError('Please use a different username.')

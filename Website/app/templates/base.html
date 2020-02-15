@@ -1,7 +1,7 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
-    {% if title %}{{ title }} - Microblog{% else %}Welcome to Microblog{% endif %}
+    {% if title %}{{ title }} - SafeBet{% else %}Welcome to SafeBet{% endif %}
 {% endblock %}
 
 {% block navbar %}
@@ -20,8 +20,15 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('nba') }}">NBA</a></li>
                 </ul>
+
                 <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_anonymous %}
                     <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
