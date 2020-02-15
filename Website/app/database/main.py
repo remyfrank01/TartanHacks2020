@@ -66,12 +66,21 @@ def update_users(user, filepath):
     with open(filepath, 'w') as json_file:
         json.dump(data, json_file, indent=4)
 
-def update_bets():
-    new_data = scrape_update()
-'''
-retrieve bets -- update bet data and if winner determined,
-calculate winnings and add to user total and total-history
-'''
+# def update_bets():
+#     new_data = scrape_update()
+# '''
+# retrieve bets -- update bet data and if winner determined,
+# calculate winnings and add to user total and total-history
+# '''
+
+def update_bets(bet, filepath):
+    new_bet = copy.deepcopy(bet)
+    new_bet.pop("bet_id")
+    with open(filepath, 'r') as json_file:
+        data = json.load(json_file)
+        data["bets"][bet["bet_id"]] = new_bet
+    with open(filepath, 'w') as json_file:
+        json.dump(data, json_file, indent=4)
 
 def new_user_bets(user_bet, filepath):
     bet = copy.deepcopy(user_bet)
