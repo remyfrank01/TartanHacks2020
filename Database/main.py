@@ -28,6 +28,7 @@ database (dict)
         retrieve user using user_id in string form (dict)
           "username" (string)
           "total" (float)
+          "total-history" (list of tuples -- (time, result))
      "user-bets" (dict)
         retrieve list of bets from each user using user_id in string form (list)
           for each element (dict):
@@ -56,6 +57,7 @@ import json, time, copy
 def update_users(user):
     new_user = copy.deepcopy(user)
     new_user.pop("user_id")
+    new_user["total-history"] = []
     with open('data.json', 'r') as json_file:
         data = json.load(json_file)
         data["users"][user["user_id"]] = new_user
@@ -64,7 +66,10 @@ def update_users(user):
 
 def update_bets():
     new_data = scrape_update()
-
+'''
+retrieve bets -- update bet data and if winner determined, 
+calculate winnings and add to user total and total-history
+'''
 
 def new_user_bets(user_bet):
     bet = copy.deepcopy(user_bet)
@@ -84,4 +89,3 @@ def retrieve_database():
     with open('data.json', 'r') as json_file:
         data = json.load(json_file)
         return data
-    

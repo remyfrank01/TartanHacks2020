@@ -2,15 +2,18 @@
     "users": {
         "000001": {
             "username": "keltin_7",
-            "total": 8000.1
+            "total": 8000.1,
+            "total-history" : []
         },
         "508234": {
             "username": "RonSwanson",
-            "total": -500.4
+            "total": -500.4,
+            "total-history" : []
         },
         "012345": {
             "username": "peepee",
-            "total": 12.5
+            "total": 12.5,
+            "total-history" : []
         }
     },
     "user-bets": {
