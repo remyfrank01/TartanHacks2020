@@ -55,13 +55,13 @@ import json, time, copy
 
 
 def update_users(user, filepath):
-    if user["user_id"] in data["users"]:
-        return
     new_user = copy.deepcopy(user)
     new_user.pop("user_id")
     new_user["total-history"] = []
     with open(filepath, 'r') as json_file:
         data = json.load(json_file)
+        if user["user_id"] in data["users"]:
+            return
         data["users"][user["user_id"]] = new_user
     with open(filepath, 'w') as json_file:
         json.dump(data, json_file, indent=4)
