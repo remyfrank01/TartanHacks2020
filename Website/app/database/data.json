@@ -3,17 +3,22 @@
         "000001": {
             "username": "keltin_7",
             "total": 8000.1,
-            "total-history" : []
+            "total-history": []
         },
         "508234": {
             "username": "RonSwanson",
             "total": -500.4,
-            "total-history" : []
+            "total-history": []
         },
         "012345": {
             "username": "peepee",
             "total": 12.5,
-            "total-history" : []
+            "total-history": []
+        },
+        "248519": {
+            "username": "glympx",
+            "total": 10,
+            "total-history": []
         }
     },
     "user-bets": {
@@ -33,6 +38,48 @@
                 "value": 50,
                 "winnings": 130.75,
                 "net": 80.75
+            },
+            {
+                "bet_id": "000001",
+                "team": "Clippers",
+                "value": 100,
+                "timestamp": 1581744828.133449
+            },
+            {
+                "bet_id": "000001",
+                "team": "Clippers",
+                "value": 100,
+                "timestamp": 1581744835.9453576
+            },
+            {
+                "bet_id": "000001",
+                "team": "Celtics",
+                "value": 50,
+                "timestamp": 1581747717.2651715
+            },
+            {
+                "bet_id": "000001",
+                "team": "Clippers",
+                "value": 9238475,
+                "timestamp": 1581747739.073022
+            },
+            {
+                "bet_id": "000001",
+                "team": "Clippers",
+                "value": 97,
+                "timestamp": 1581748385.708965
+            },
+            {
+                "bet_id": "000001",
+                "team": "Celtics",
+                "value": 9874,
+                "timestamp": 1581748411.180768
+            },
+            {
+                "bet_id": "000001",
+                "team": "Celtics",
+                "value": 69,
+                "timestamp": 1581748757.6759574
             }
         ]
     },

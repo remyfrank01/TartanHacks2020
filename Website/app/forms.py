@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import *
 from wtforms.validators import DataRequired
 
 class LoginForm(FlaskForm):
@@ -7,3 +7,11 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
+
+class PlaceBetForm(FlaskForm):
+    bet_id = HiddenField('Bet ID')
+    team1 = HiddenField('Team 1')
+    team2 = HiddenField('Team 2')
+    bet = IntegerField('Bet Amount', validators=[DataRequired()])
+    team = SelectField('Team, "Left" or "Right"', choices = [('left', 'Left'), ('right', 'Right')], validators=[DataRequired()])
+    placeBet = SubmitField('Place Bet')

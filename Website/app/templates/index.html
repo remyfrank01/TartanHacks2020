@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hello, {{ user.username }}!</h1>
-    {% for bet in live_bets %}
-    <div><p>{{ bet.team1 }} {{ bet.line1 }} <b>vs.</b> {{ bet.team2 }} {{ bet.line2 }}</p></div>
-    {% endfor %}
+    <h2 style="padding: 10px 100px 10px 100px">Hello, {{ user.username }}!</h2>
+    <h3 style="padding: 10px 100px 10px 100px">
+        Welcome to SafeBet, a risk-free alternative to standard sports betting for those
+        looking for extra practice or those at risk for gambling addictions.
+    </h3>
+    <h4 style="padding: 10px 100px 10px 100px">
+        If you or a loved one has a gambling problem, call the National Problem Gambling
+        Helpling at 1-800-522-4700.
+    </h4>
 {% endblock %}

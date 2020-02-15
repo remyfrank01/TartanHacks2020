@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Place 'Bets' on NBA Games</h1>
+    {% for bet in live_bets %}
+    <div><p>{{ bet.team1 }} {{ bet.line1 }} <b>vs.</b> {{ bet.team2 }} {{ bet.line2 }}</p></div>
+    <form action="" method="post" novalidate>
+        {{ form.csrf_token() }}
+        {{ form.bet_id(value = bet.bet_id) }}
+        {{ form.team1(value = bet.team1) }}
+        {{ form.team2(value = bet.team2) }}
+        <p>
+            {{ form.team.label }}<br>
+            {{ form.team }}<br>
+            {% for error in form.team.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.bet.label }}<br>
+            {{ form.bet(size=32) }}<br>
+            {% for error in form.bet.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.placeBet() }}</p>
+        <hr>
+    </form>
+    {% endfor %}
+{% endblock %}
