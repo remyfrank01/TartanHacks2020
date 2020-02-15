@@ -26,7 +26,8 @@
     "line2" : -1,
     "odds1" : -109,
     "odds2" : -112,
-    "winner" : "None"},
+    "winner" : "None",
+    "timestamp" : 0},
    "234798":
    {"team-1" : "Duke",
     "team-2" : "UNC",
@@ -34,6 +35,7 @@
     "line2" : 8.5,
     "odds1" : -110,
     "odds2" : -110,
-    "winner" : "Duke"}
+    "winner" : "Duke",
+    "timestamp" : 0}
    }
 }

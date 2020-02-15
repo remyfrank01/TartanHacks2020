@@ -22,7 +22,7 @@ new_user_bets(user_bet)
 update_bets()
 //@ensures all data and bets are up to date
 
-DATABASE FORMAT:
+DATABASE FORMAT: (retrieve_database() returns dict)
 database (dict)
      "users" (dict)
         retrieve user using user_id in string form (dict)
@@ -46,23 +46,34 @@ database (dict)
           "odds1" (int)
           "odds2" (int)
           "winner" (string -- "None" if no winner yet)
+          "timestamp" (int)
 
 """
 
-import json
+import json, time, copy
 
 def update_users(user):
     with open('data.json') as json_file:
         data = json.load(json_file)
-        data["users"].append(user)
+        data["users"].append(copy.deepcopy(user))
+        json.dump(dict, json_file, indent = 4)
 
 def update_bets():
-    scrape_update()
+    new_data = scrape_update()
 
 def new_user_bets(user_bet):
+    bet = copy.deepcopy(user_bet)
+    bet.pop("user_id")
+    bet["timestamp"] = time.time()
     with open('data.json') as json_file:
         data = json.load(json_file)
         if user_bet["user_id"] in data["user-bets"]:
-            
+            data["user-bets"][user_bet["user_id"]].append(bet)
         else:
-            data["user-bets"][user_bet["user_id"]] = []
+            data["user-bets"][user_bet["user_id"]] = [bet]
+        json.dump(dict, json_file, indent = 4)
+
+def retrieve_database():
+    with open('data.json') as json_file:
+        data = json.load(json_file)
+        return data
