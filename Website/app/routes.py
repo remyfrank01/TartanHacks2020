@@ -1,8 +1,10 @@
 from flask import render_template, flash, redirect, url_for
 from app import app
 from app.forms import LoginForm
-import sys
 from random import randint
+import sys
+sys.path.append('/database')
+from main import *
 
 @app.route('/')
 @app.route('/index')
