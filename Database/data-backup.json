@@ -1,0 +1,43 @@
+{ "users" : 
+    [ { "user_id" : 000001,
+        "username" : "keltin_7",
+        "total" : 8000.10},
+      { "userid" : 508234,
+         "username" : "RonSwanson",
+         "total" : -500.40
+    }
+],
+  "user-bets" :
+  [ {"user_id" : 000001,
+     "bet_id" : 000001,
+     "team" : "Clippers",
+     "value" : 100,
+     "winnings" : 191.10,
+     "net" : 91.10},
+    {"user_id": 508234,
+     "bet_id" : 234798,
+     "team" : "Duke",
+     "value" : 50,
+     "winnings" : 130.75,
+     "net" : 80.75
+    }
+],
+  "bets" :
+  [ {"bet_id" : 000001,
+    "team-1" : "Clippers",
+    "team-2" : "Celtics",
+    "line1" : 1,
+    "line2" : -1,
+    "odds1" : -109,
+    "odds2" : -112,
+    "winner" : "None"},
+   {"bet_id" : 234798,
+    "team-1" : "Duke",
+    "team-2" : "UNC",
+    "line1" : -8.5,
+    "line2" : 8.5,
+    "odds1" : -110,
+    "odds2" : -110,
+    "winner" : "Duke"}
+]
+}
