@@ -54,16 +54,16 @@ database (dict)
 import json, time, copy
 
 
-def update_users(user):
+def update_users(user, filepath):
     if user["user_id"] in data["users"]:
         return
     new_user = copy.deepcopy(user)
     new_user.pop("user_id")
     new_user["total-history"] = []
-    with open('data.json', 'r') as json_file:
+    with open(filepath, 'r') as json_file:
         data = json.load(json_file)
         data["users"][user["user_id"]] = new_user
-    with open('data.json', 'w') as json_file:
+    with open(filepath, 'w') as json_file:
         json.dump(data, json_file, indent=4)
 
 def update_bets():
@@ -73,21 +73,21 @@ retrieve bets -- update bet data and if winner determined,
 calculate winnings and add to user total and total-history
 '''
 
-def new_user_bets(user_bet):
+def new_user_bets(user_bet, filepath):
     bet = copy.deepcopy(user_bet)
     bet.pop("user_id")
     bet["timestamp"] = time.time()
-    with open('data.json', 'r') as json_file:
+    with open(filepath, 'r') as json_file:
         data = json.load(json_file)
         if user_bet["user_id"] in data["user-bets"]:
             data["user-bets"][user_bet["user_id"]].append(bet)
         else:
             data["user-bets"][user_bet["user_id"]] = [bet]
-    with open('data.json', 'w') as json_file:
+    with open(filepath, 'w') as json_file:
         json.dump(data, json_file, indent=4)
 
 
-def retrieve_database():
-    with open('data.json', 'r') as json_file:
+def retrieve_database(filepath):
+    with open(filepath, 'r') as json_file:
         data = json.load(json_file)
         return data
