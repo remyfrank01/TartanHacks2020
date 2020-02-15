@@ -67,7 +67,7 @@ def update_users(user):
 def update_bets():
     new_data = scrape_update()
 '''
-retrieve bets -- update bet data and if winner determined, 
+retrieve bets -- update bet data and if winner determined,
 calculate winnings and add to user total and total-history
 '''
 
