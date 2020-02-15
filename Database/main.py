@@ -52,28 +52,36 @@ database (dict)
 
 import json, time, copy
 
+
 def update_users(user):
-    with open('data.json') as json_file:
+    new_user = copy.deepcopy(user)
+    new_user.pop("user_id")
+    with open('data.json', 'r') as json_file:
         data = json.load(json_file)
-        data["users"].append(copy.deepcopy(user))
-        json.dump(dict, json_file, indent = 4)
+        data["users"][user["user_id"]] = new_user
+    with open('data.json', 'w') as json_file:
+        json.dump(data, json_file, indent=4)
 
 def update_bets():
     new_data = scrape_update()
+
 
 def new_user_bets(user_bet):
     bet = copy.deepcopy(user_bet)
     bet.pop("user_id")
     bet["timestamp"] = time.time()
-    with open('data.json') as json_file:
+    with open('data.json', 'r') as json_file:
         data = json.load(json_file)
         if user_bet["user_id"] in data["user-bets"]:
             data["user-bets"][user_bet["user_id"]].append(bet)
         else:
             data["user-bets"][user_bet["user_id"]] = [bet]
-        json.dump(dict, json_file, indent = 4)
+    with open('data.json', 'w') as json_file:
+        json.dump(data, json_file, indent=4)
+
 
 def retrieve_database():
-    with open('data.json') as json_file:
+    with open('data.json', 'r') as json_file:
         data = json.load(json_file)
         return data
+    
