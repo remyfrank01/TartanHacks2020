@@ -55,6 +55,8 @@ import json, time, copy
 
 
 def update_users(user):
+    if user["user_id"] in data["users"]:
+        return
     new_user = copy.deepcopy(user)
     new_user.pop("user_id")
     new_user["total-history"] = []
